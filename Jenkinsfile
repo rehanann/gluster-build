@@ -40,7 +40,7 @@ pipeline {
         stage('Pre-req Installation') {
                 steps {
                     sh 'export ANSIBLE_HOST_KEY_CHECKING=False'
-                    sh 'ansible-playbook -i inventory.ini ansible-pb/config.yml'
+                    sh 'ansible-playbook -i host.ini ansible-pb/config.yml'
                     sh 'sleep 120'
                 }
         }
