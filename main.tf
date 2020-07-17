@@ -83,7 +83,7 @@ resource "google_compute_attached_disk" "infra-2" {
 }
 
 resource "google_compute_instance" "worker-2" {
-  name = "gluster-3"
+  name = "worker-2"
   machine_type = "${var.machine_type}"
   zone = "${"${var.region}"}-a"
 
