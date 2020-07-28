@@ -1,4 +1,4 @@
-resource "google_compute_instance" "master-1" {
+resource "google_compute_instance" "gluster-1" {
   name = "gluster-1"
   machine_type = "${var.machine_type}"
   zone = "${"${var.region}"}-a"
@@ -28,20 +28,20 @@ resource "google_compute_instance" "master-1" {
     }
 }
 
-resource "google_compute_disk" "master-1" {
-    name = "master-1-docker"
+resource "google_compute_disk" "gluster-1" {
+    name = "gluster-1-docker"
     type = "pd-ssd"
     zone = "${"${var.region}"}-a"
     size = "10"
 }
 
-resource "google_compute_attached_disk" "master-1" {
-    disk = "${google_compute_disk.master-1.self_link}"
-    instance = "${google_compute_instance.master-1.self_link}"
+resource "google_compute_attached_disk" "gluster-1" {
+    disk = "${google_compute_disk.gluster-1.self_link}"
+    instance = "${google_compute_instance.gluster-1.self_link}"
 }
 
-resource "google_compute_instance" "infra-1" {
-  name = "infra-1"
+resource "google_compute_instance" "gluster-2" {
+  name = "gluster-2"
   machine_type = "${var.machine_type}"
   zone = "${"${var.region}"}-a"
 
@@ -70,20 +70,20 @@ resource "google_compute_instance" "infra-1" {
   }
 }
 
-resource "google_compute_disk" "infra-1" {
-    name = "infra-1-docker"
+resource "google_compute_disk" "gluster-2" {
+    name = "gluster-2-docker"
     type = "pd-ssd"
     zone = "${"${var.region}"}-a"
     size = "10"
 }
 
-resource "google_compute_attached_disk" "infra-1" {
-    disk = "${google_compute_disk.infra-1.self_link}"
-    instance = "${google_compute_instance.infra-1.self_link}"
+resource "google_compute_attached_disk" "gluster-2" {
+    disk = "${google_compute_disk.gluster-2.self_link}"
+    instance = "${google_compute_instance.gluster-2.self_link}"
 }
 
-resource "google_compute_instance" "worker-1" {
-  name = "worker-1"
+resource "google_compute_instance" "gluster-3" {
+  name = "gluster-3"
   machine_type = "${var.machine_type}"
   zone = "${"${var.region}"}-a"
 
@@ -112,14 +112,14 @@ resource "google_compute_instance" "worker-1" {
   }
 }
 
-resource "google_compute_disk" "worker-1" {
-    name = "worker-1-docker"
+resource "google_compute_disk" "gluster-3" {
+    name = "gluster-3-docker"
     type = "pd-ssd"
     zone = "${"${var.region}"}-a"
     size = "10"
 }
 
-resource "google_compute_attached_disk" "worker-1" {
-    disk = "${google_compute_disk.worker-1.self_link}"
-    instance = "${google_compute_instance.worker-1.self_link}"
+resource "google_compute_attached_disk" "gluster-3" {
+    disk = "${google_compute_disk.gluster-3.self_link}"
+    instance = "${google_compute_instance.gluster-3.self_link}"
 }
